@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, session
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 
@@ -25,7 +25,8 @@ def create_app():
     app.register_blueprint(auth_views.bp)
     app.register_blueprint(admin_views.bp)
 
-    # from yp.plotlydash.dashboard import create_dashboard
-    # app = create_dashboard(app)
+    from yp.plotlydash.dashboard import create_dashboard
+    app = create_dashboard(app)
 
     return app
+

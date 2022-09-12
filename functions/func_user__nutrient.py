@@ -1,10 +1,10 @@
 # 체중 대비 백분율 (PIBW, Percent of Ideal Body Weight)
 def standard_weight(sex, height):
     if sex == 1:
-        weight_s = height * height * 22
+        weight_s = (height / 100) * (height / 100) * 22
     
     if sex == 0:
-        weight_s = height * height * 21
+        weight_s = (height / 100) * (height / 100) * 21
     return weight_s
 
 
@@ -17,10 +17,10 @@ def calorie_counting(sex, age, height, weight_a, PA):
     PA = PA_list[PA]
 
     if sex == 1:
-        calorie = 662 - (9.53 * age) + PA*((539.6 * height) + (15.91 * weight_a))
+        calorie = 662 - (9.53 * age) + PA*((539.6 * (height / 100)) + (15.91 * weight_a))
     
     if sex == 0:
-        calorie = 354 - (6.91 * age) + PA*((726  * height) + (9.36 * weight_a))
+        calorie = 354 - (6.91 * age) + PA*((726 * (height / 100)) + (9.36 * weight_a))
     
     return calorie
 
@@ -105,6 +105,9 @@ en_ko_dict = {'carbohydrate' : '탄수화물' ,'fat' :'지방' ,'protein ' : '�
 
 from datetime import datetime
 def user_age(birthday, standard = datetime.now()):
+    if type(birthday) == str:
+        birthday = datetime.strptime(birthday, '%Y-%m-%d')
+
     if standard.month - birthday.month > 0:
         age = standard.year - birthday.year
     elif standard.month == birthday.month:

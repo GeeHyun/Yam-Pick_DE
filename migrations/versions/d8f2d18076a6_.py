@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 5318354c7d8d
+Revision ID: d8f2d18076a6
 Revises: 
-Create Date: 2022-09-11 15:20:18.945225
+Create Date: 2022-09-11 23:35:28.977631
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '5318354c7d8d'
+revision = 'd8f2d18076a6'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -71,6 +71,7 @@ def upgrade():
     sa.Column('upload_foodname', sa.String(length=45), nullable=False),
     sa.Column('upload_location', sa.String(length=45), nullable=False),
     sa.Column('upload_isnew', sa.Boolean(), nullable=False),
+    sa.Column('upload_percent', sa.FLOAT(precision=10), nullable=True),
     sa.ForeignKeyConstraint(['upload_user'], ['tb_user.user_email'], ondelete='SET NULL'),
     sa.PrimaryKeyConstraint('upload_index')
     )

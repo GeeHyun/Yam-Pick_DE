@@ -22,6 +22,7 @@ class tb_user_img(db.Model):
     upload_foodname = db.Column(db.String(45), nullable=False)
     upload_location = db.Column(db.String(45), nullable=False)
     upload_isnew = db.Column(db.Boolean, nullable=False)
+    upload_percent = db.Column(db.FLOAT(10), nullable=True)
 
 class tb_food_img(db.Model):
     def __getitem__(self,key):
